@@ -82,7 +82,7 @@ def display_results(algorithm_name, reference_string, frames_results, page_fault
 #
 def main():
     reference_strings = read_test_data()
-    frame_sizes = [3,4,5,6]
+    frame_sizes = [5]
     
     for frame_size in frame_sizes:
         fifo_sum, lru_sum, opt_sum = 0,0,0
@@ -93,7 +93,7 @@ def main():
             fifo_sum += fifo_faults
             # LRU
             lru_results, lru_faults = lru(reference_string, frame_size)
-            #display_results("LRU", reference_string, lru_results, lru_faults, frame_size)
+            display_results("LRU", reference_string, lru_results, lru_faults, frame_size)
             lru_sum += lru_faults
             # Optimal
             optimal_results, optimal_faults = optimal(reference_string, frame_size)
