@@ -63,7 +63,7 @@ def optimal(reference_string, frame_size):
     return result, page_faults
 
 # Read the test data file
-def read_test_data(filename=r"C:\Users\locng\Documents\Github\CS_4310_OS\Project_2\data.txt"):
+def read_test_data(filename=r"data.txt"):
     with open(filename, 'r') as file:
         return [line.strip() for line in file.readlines()]
 
@@ -82,14 +82,14 @@ def display_results(algorithm_name, reference_string, frames_results, page_fault
 #
 def main():
     reference_strings = read_test_data()
-    frame_sizes = [5]
+    frame_sizes = [4]
     
     for frame_size in frame_sizes:
         fifo_sum, lru_sum, opt_sum = 0,0,0
         for reference_string in reference_strings:
             # FIFO
             fifo_results, fifo_faults = fifo(reference_string, frame_size)     
-            #display_results("FIFO", reference_string, fifo_results, fifo_faults, frame_size)
+            display_results("FIFO", reference_string, fifo_results, fifo_faults, frame_size)
             fifo_sum += fifo_faults
             # LRU
             lru_results, lru_faults = lru(reference_string, frame_size)
